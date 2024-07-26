@@ -1,0 +1,93 @@
+.backBtn {
+    background-color: white; 
+    height: 26px;
+    font-family: "Shadows Into Light", cursive;
+    
+}
+.lightDarkToggle { 
+    
+    height: 50px; 
+    background-color: white;
+    /* opacity: 0.4; */
+    border-radius: 50%; 
+    border: none;     
+        
+}  
+.dark-mode {
+    background-color: black;
+    color: white;
+}
+h1 {
+    font-family: "Dancing Script", cursive;
+    
+    
+}
+
+h4 {
+    font-family: "Dancing Script", cursive;
+    font-size: 20px;  
+}
+
+h2 {
+    font-family: "Shadows Into Light", cursive;
+}
+
+ul {
+    font-family: "Shadows Into Light", cursive;
+    list-style-type: none;
+    font-size: 20px;
+}
+p {
+    
+    font-family: "Shadows Into Light", cursive;
+}   
+header {
+    padding: 10px;
+}
+
+button{
+    background-color: white;
+    /* border-radius: 50%; */
+    border: none;
+    float: right; 
+    font-family: "Shadows Into Light", cursive;
+    font-size: 15px;
+    
+}
+div {
+   padding: 20px 0;
+   border: solid;
+   
+    text-align: center;
+
+}
+article {
+   display: grid;
+   /* height: 400px; */
+   align-content: space-evenly;
+   grid-template-columns: auto auto auto;
+   gap: 10px;
+   padding: 10px;
+   
+   
+}
+footer {
+    text-align: center;
+    width: 100%;
+    
+    
+
+}
+a:link {
+    color: black;
+    
+}
+.theme-img {
+    height: 200px;
+    width: 100%;
+    margin-top: 25px;
+    margin-bottom: 25px;
+    background-image: url("../assets/plant\ lover.png");
+    background-size: cover;
+    background-position: center;
+}
