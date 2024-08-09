@@ -19,13 +19,20 @@
 <body>
     <header>
        <nav class="navbar bg-body-tertiary">
-    <a class="navbar-brand" href="#">
-      <img src="../../public/images/logoMed.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"></a>
+    <a class="navbar-brand" href="/">
+      <img src="/public/images/logoMed.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"></a>
   <form class="form-inline">
-     <button class="btn btn-sm btn-outline-secondary" type="button">Login</button>
-    <button class="btn btn-sm btn-outline-secondary" type="button">Get Started</button>
+     <!-- If the user is logged in, show a logout button -->
+    {{#if loggedIn}}
+    <button id="logout" class="btn btn-sm btn-outline-secondary" type="button"><a href="/logout">Logout</a></button>
+    {{else}}
+    <!-- Otherwise, show a link to login -->
+    <button id="login" class="btn btn-sm btn-outline-secondary" type="button"><a href="/login">Login</a></button>
+    {{/if}}
+     
+    <button class="btn btn-sm btn-outline-secondary" type="button"><a href="/getStarted">Get Started</a></button>
   </form>
-        <button onclick="myDarkModeFunction()" id="theme-switcher"><img src="../../public/images/sun2.png" class="lightDarkToggle" alt="sun clipart"/></button>
+        <button onclick="myDarkModeFunction()" id="theme-switcher"><img src="/public/images/sun2.png" class="lightDarkToggle" alt="sun clipart"/></button>
   
 </nav>
     </header>

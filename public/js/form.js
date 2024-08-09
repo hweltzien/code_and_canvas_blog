@@ -32,7 +32,7 @@ formEl.addEventListener('submit', function (event) {
     const username = usernameInput.value;
     const title = titleInput.value;
     const content = contentInput.value;
-console.log(username, title)
+console.log(username, title,content,"Add new post")
     if (username === '') {
         // displayMessage('error', 'Username cannot be blank');
         alert("Username cannot be blank")
