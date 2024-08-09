@@ -36,16 +36,7 @@ button{
     
 
 
-.theme-img {
-    height: 200px;
-    width: 100%;
-    margin-top: 25px;
-    margin-bottom: 25px;
-    background-image: url("../assets/plant\ lover.png");
-    background-size: cover;
-    background-position: center;
-   
-}
+
 
 .parent-container {
 /*contains "circle" and "form"*/    
@@ -59,11 +50,11 @@ button{
 .circle {
     color: #ffffff;
     float: left;
-    background-color: #556B2F;
-    height: 250px;
-    width: 250px;
+    background-color: #8EB4BF;
+    height: 390px;
+    width: 370px;
     border-radius: 50%;
-    font-size: 70px;
+    font-size: 62px;
     word-wrap: break-word;
     /*margin: auto;*/
     padding: 75px;

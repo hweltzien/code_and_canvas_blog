@@ -23,7 +23,7 @@ themeSwitcher.addEventListener('click', function () {
 
 backBTN.addEventListener('click', function (event) {
   event.preventDefault();
-    window.location.assign("index.html")
+    window.location.assign("/")
 });
 
 

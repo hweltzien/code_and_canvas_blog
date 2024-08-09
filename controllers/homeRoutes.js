@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { Title, User } = require("../models");
+const { Title, User } = require("../models/user");
 const withAuth = require("../utils/auth");
 
 
@@ -15,35 +15,36 @@ router.get("/", async (req, res) => {
 });
 
 router.get("/user", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/user", {isLoggedIn: res.locals.isLoggedIn});
-    return;
-  }
-
-  res.render("login");
-});
-
-
-
-router.get("/signout", (req, res) => {
-  if (req.session.logged_in) {
-    res.redirect("/signout");
-    return;
-  }
-
-  res.render("signout");
-});
-
-
-
-router.get("/signout", async (req, res) => {
-  console.log("signout route");
   try {
-    res.render("signout");
+
+    res.render("user");
+
   } catch (err) {
     res.json(err);
   }
-  res.render("signout");
+});
+
+
+router.get("/posts", (req, res) => {
+  try {
+
+    res.render("posts");
+
+  } catch (err) {
+    res.json(err);
+  }
+});
+
+
+
+router.get("/logout", async (req, res) => {
+  console.log("logout route");
+  try {
+    res.render("logout");
+  } catch (err) {
+    res.json(err);
+  }
+  res.render("logout");
 });
 
 module.exports = router;

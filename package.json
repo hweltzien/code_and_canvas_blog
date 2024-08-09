@@ -1,0 +1,31 @@
+{
+  "name": "code_and_canvas_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "node server.js",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hweltzien/code_and_canvas_blog.git"
+  },
+  "author": "Heather Weltzien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hweltzien/code_and_canvas_blog/issues"
+  },
+  "homepage": "https://github.com/hweltzien/code_and_canvas_blog#readme",
+  "dependencies": {
+    "bcrypt": "^5.1.1",
+    "bootstrap": "^5.3.3",
+    "connect-session-sequelize": "^7.1.7",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "express-handlebars": "^8.0.1",
+    "express-session": "^1.18.0",
+    "pg": "^8.12.0",
+    "sequelize": "^6.37.3"
+  }
+}

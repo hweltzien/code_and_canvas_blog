@@ -61,7 +61,7 @@ console.log(username, title)
 
     // set new post to local storage
     localStorage.setItem('blogPosts', JSON.stringify(allBlogPost));
-    window.location.assign("blog.html")
+    document.location.replace("/posts");
 });
 
 
