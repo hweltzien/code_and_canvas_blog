@@ -1,13 +1,6 @@
-.lightDarkToggle { 
-    border: none;
-    height: 50px; 
-    background-color: white; 
-    /* opacity: 0.4; */
-    border-radius: 50%; 
-    
-    
+
              
-}  
+
 header {
     padding: 30px;
 }
@@ -15,15 +8,13 @@ h1 {
     font-family: "Dancing Script", cursive;
 }
 
-.dark-mode {
-    background-color: black;
-    color: white;
-}
+
+
 button{
     background-color: white;
     border: none;
     float: right;
- }
+ } 
     
 .submitBtn {
     background-color:lightgray;

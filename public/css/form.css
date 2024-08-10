@@ -10,6 +10,10 @@
   background-position: center;
  
 }
+nav {
+  background-color: #8EB4BF;
+ 
+}
 
 .zeyada-regular {
     font-family: "Zeyada", cursive;
@@ -32,3 +36,11 @@
   font-weight: 400;
   font-style: normal;
 }
+/* button{
+  background-color: white;
+  border: none;
+  float: right;
+  text-decoration: none;
+   font-family: "Shadows Into Light", cursive;
+  font-size: 15px;
+} */

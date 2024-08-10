@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Shadows+Into+Light&family=Zeyada&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="/images/icon.png">
     <link rel="stylesheet" href="./css/style.css">
     <link rel="stylesheet" href="./css/blog.css">
     <link rel="stylesheet" href="./css/form.css">
@@ -18,9 +19,9 @@
 
 <body>
     <header>
-       <nav class="navbar bg-body-tertiary">
+       <nav class="navbar navbar-light" style="background-color: white;">
     <a class="navbar-brand" href="/">
-      <img src="/public/images/logoMed.png" alt="Logo" width="30" height="24" class="d-inline-block align-text-top"></a>
+      <img src="/images/icon.png" alt="Logo" width="70" height="70" class="d-inline-block align-text-top"></a>
   <form class="form-inline">
      <!-- If the user is logged in, show a logout button -->
     {{#if loggedIn}}
@@ -32,7 +33,7 @@
      
     <button class="btn btn-sm btn-outline-secondary" type="button"><a href="/getStarted">Get Started</a></button>
   </form>
-        <button onclick="myDarkModeFunction()" id="theme-switcher"><img src="/public/images/sun2.png" class="lightDarkToggle" alt="sun clipart"/></button>
+        
   
 </nav>
     </header>

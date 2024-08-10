@@ -47,16 +47,16 @@ header {
 
 button{
     background-color: white;
-    /* border-radius: 50%; */
+    border-radius: 50%;
     border: none;
     float: right; 
     font-family: "Shadows Into Light", cursive;
     font-size: 15px;
-    
-}
+     
+} 
 div {
    padding: 20px 0;
-   border: solid;
+   /* border: solid; */
    /* border-radius: 5%; */
     text-align: center;
 
