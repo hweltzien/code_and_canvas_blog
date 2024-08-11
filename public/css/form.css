@@ -36,6 +36,15 @@ nav {
   font-weight: 400;
   font-style: normal;
 }
+
+footer ul li {
+  list-style-type: none;
+  display: inline-block;
+  margin-left: 25px;
+  font-size: 20px;
+  text-decoration: none;
+}
+
 /* button{
   background-color: white;
   border: none;
