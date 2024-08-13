@@ -32,8 +32,8 @@ button{
 .parent-container {
 /*contains "circle" and "form"*/    
     display: flex;
-    /* margin: 100px; */
-    /* padding: 100px; */
+    margin: 100px;
+    padding: 100px;
     font-size: 70px;
     justify-content: space-evenly;
     
@@ -41,7 +41,7 @@ button{
 .circle {
     color: #ffffff;
     float: left;
-    background-color: #8EB4BF;
+    background-color: #2E3E50;
     height: 390px;
     width: 370px;
     border-radius: 50%;
@@ -59,7 +59,7 @@ button{
 }
 .form-container {
     font-size: 25px;
-    border-left: 3px solid;
+    /* border-left: 3px solid; */
     font-family: "Shadows Into Light", cursive;
     font-weight: 400;
     font-style: normal;
@@ -69,7 +69,7 @@ button{
 
 textarea {
     width: 100%;
-    height: 150px;
+    /* height: 150px; */
     resize: none;
 }
 

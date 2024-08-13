@@ -49,7 +49,9 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(express.static("public"));
 // Define a route to render the homepage.handlebars template
 app.get("/", (req, res) => {
-  res.render("homepage");
+  res.render("homepage", {
+    isLoggedIn: req.session.isLoggedIn,
+  });
 });
 app.use(routes);
 

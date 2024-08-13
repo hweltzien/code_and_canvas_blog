@@ -2,7 +2,7 @@ const router = require("express").Router();
 const  User  = require("../../models/user");
 
 // CREATE new user
-router.post("/", async (req, res) => {
+router.post("/getStarted", async (req, res) => {
   console.log(req.body);
   try {
     const dbUserData = await User.create({
@@ -67,15 +67,21 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.post("/logout", (req, res) => {
+router.get("/logout", (req, res) => {
+  if(req.session.isLoggedIn){
+    req.session.isLoggedIn = false;
   req.session.destroy(err => {
       if (err) {
         console.log(err);
         res.status(500).json({ message: 'Failed to log out' });
       }
       res.clearCookie("connect.sid", { path: '/' });
-      return res.status(200).json({ message: 'Logged out successfully' });
+      res.render("logout",{isLoggedIn:false});
+      
     });
+  }else{
+    res.redirect("/");
+  }
 });
 
 module.exports = router;
