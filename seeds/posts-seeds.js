@@ -18,6 +18,6 @@ const postsData = [
     },
     ];
 
-    const seedPosts = () => Title.bulkCreate(postsData);
+    const seedPosts = () => Posts.bulkCreate(postsData);
 
 module.exports = seedPosts;

@@ -3,7 +3,7 @@ const sequelize = require("../config/connection");
 
 class Posts extends Model {}
 
-Title.init(
+Posts.init(
   {
     title: {
       type: DataTypes.STRING,
@@ -19,6 +19,10 @@ Title.init(
         model: "user",
         key: "id",
       },
+    },
+    url: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },
   },
   {

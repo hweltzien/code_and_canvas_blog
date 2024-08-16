@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const  User  = require("../../models/user");
+const {User}  = require("../../models");
 
 // CREATE new user
 router.post("/getStarted", async (req, res) => {
@@ -67,7 +67,7 @@ router.post("/login", async (req, res) => {
 });
 
 // Logout
-router.get("/logout", (req, res) => {
+router.post("/logout", (req, res) => {
   if(req.session.isLoggedIn){
     req.session.isLoggedIn = false;
   req.session.destroy(err => {

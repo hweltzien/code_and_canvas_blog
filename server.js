@@ -25,7 +25,7 @@ const sess = {
     secure: false,
   },
   resave: false,
-  saveUninitialized: true,
+  saveUninitialized: false,
   store: new SequelizeStore({
     db: sequelize,
   }),
@@ -48,11 +48,7 @@ app.use(express.static(path.join(__dirname, "public")));
 // Serve static files from the "public" directory
 app.use(express.static("public"));
 // Define a route to render the homepage.handlebars template
-app.get("/", (req, res) => {
-  res.render("homepage", {
-    isLoggedIn: req.session.isLoggedIn,
-  });
-});
+
 app.use(routes);
 
 sequelize.sync({ force: false }).then(() => {
