@@ -11,6 +11,7 @@ h1 {
 }
 
 p {
+  
     font-size: 25px;
     text-align: center;
     margin: 20px;
@@ -25,7 +26,7 @@ button{
 .submitBtn {
     background-color:lightgray;
     border: black;
-    font-family: "Shadows Into Light", cursive;
+    
     font-size: 15px;
     float: left;
 }
@@ -66,7 +67,7 @@ button{
 .form-container {
     font-size: 25px;
     /* border-left: 3px solid; */
-    font-family: "Shadows Into Light", cursive;
+   
     font-weight: 400;
     font-style: normal;
     padding: 10px
