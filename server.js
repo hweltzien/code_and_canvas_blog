@@ -1,23 +1,26 @@
 const express = require("express");
-const app = express();
 const session = require("express-session");
 const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const path = require("path"); // Ensure this line is present
-const Sequelize = require("sequelize");
+
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 const cloudinary = require('cloudinary');
+require("dotenv").config();
+const multer = require('multer');
+const storage = multer.memoryStorage();
+const upload = multer({ storage: storage });
 
 cloudinary.v2.config({
-  cloud_name: 'dbdfjnmds',
-  api_key: '898392896474232',
-  api_secret: 'ogZ97OrgPRa6dnMoEIm7zl5_i00',
+  cloud_name: process.env.cloudinary_cloud_name,
+  api_key: process.env.cloudinary_api_key,
+  api_secret: process.env.cloudinary_api_secret,
   secure: true,
 });
 
-// const app = express();
+const app = express();
 const PORT = process.env.PORT || 3000;
 
 // Set up Handlebars.js engine with custom helpers
@@ -55,6 +58,22 @@ app.use(express.static(path.join(__dirname, "public")));
 // Serve static files from the "public" directory
 app.use(express.static("public"));
 // Define a route to render the homepage.handlebars template
+
+// Express route for image upload
+app.post('/upload', upload.single('image'), async (req, res) => {
+  try {
+    // Upload image to Cloudinary
+    const result = await cloudinary.v2.uploader.upload(req.file.path , {
+       folder:'Blog',
+    });
+
+    // Send the Cloudinary URL in the response
+    res.json({ imageUrl: result.secure_url });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Error uploading image to Cloudinary' });
+  }
+});
 
 app.use(routes);
 
