@@ -8,7 +8,14 @@ const path = require("path"); // Ensure this line is present
 const Sequelize = require("sequelize");
 const sequelize = require("./config/connection");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
+const cloudinary = require('cloudinary');
 
+cloudinary.v2.config({
+  cloud_name: 'dbdfjnmds',
+  api_key: '898392896474232',
+  api_secret: 'ogZ97OrgPRa6dnMoEIm7zl5_i00',
+  secure: true,
+});
 
 // const app = express();
 const PORT = process.env.PORT || 3000;
@@ -50,6 +57,8 @@ app.use(express.static("public"));
 // Define a route to render the homepage.handlebars template
 
 app.use(routes);
+
+
 
 sequelize.sync({ force: false }).then(() => {
   app.listen(PORT, () =>

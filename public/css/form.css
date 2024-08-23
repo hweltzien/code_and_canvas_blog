@@ -34,12 +34,14 @@
   font-style: normal;
 }
 
-footer ul li {
+ul li {
   list-style-type: none;
   display: inline-block;
-  margin-left: 25px;
+  margin: 0 10px;
   font-size: 20px;
   text-decoration: none;
+  text-align: center;
+  font-family: "Dancing Script", cursive;
 }
 
 /* button{

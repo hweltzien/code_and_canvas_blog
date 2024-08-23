@@ -1,8 +1,8 @@
 //reference to the DOM element
 const formEl = document.querySelector('.user-form');
 
-const titleInput = document.querySelector('.title');
-const contentInput = document.querySelector('.content');
+const titleInput = document.querySelector('#post-title');
+const contentInput = document.querySelector('#content');
 const imageInput = document.querySelector('.image');
 
 const submitBtn = document.querySelector('.submit');
@@ -10,17 +10,17 @@ const submitBtn = document.querySelector('.submit');
 //all blog posts are saved in db
 
 
-const allBlogPost = fetch ("/api/user", {
-    method: "POST",
-    body: JSON.stringify({ title, content, image }),
-    headers: { "Content-Type": "application/json" },
-  });
-  if (response.ok) {
-    console.log("response", response);
-    document.location.replace("/user");
-  } else {
-    alert("Failed to sign up.");
-  };
+// const allBlogPost = fetch ("/api/user", {
+//     method: "POST",
+//     body: JSON.stringify({ title, content, image }),
+//     headers: { "Content-Type": "application/json" },
+//   });
+//   if (response.ok) {
+//     console.log("response", response);
+//     document.location.replace("/user");
+//   } else {
+//     alert("Failed to sign up.");
+//   };
 //display blog post 
 //  renderBlogPost();
 
@@ -54,7 +54,7 @@ const allBlogPost = fetch ("/api/user", {
 //     contentInput.textContent = content;
 // }
 //checking that user input is provided on clicking "submit"
-formEl.addEventListener('submit', function (event) {
+formEl.addEventListener('submit', async function (event) {
     event.preventDefault();
     
     const title = titleInput.value;
@@ -66,18 +66,18 @@ console.log(title,content,"Add new post")
         alert("Please provide title")
         return;
     } else {
-        displayMessage('success', 'Posted!');
-       
-        const allBlogPost = fetch ("/api/user", {
+      // displayMessage('success', 'Posted!');
+      
+        const response = await fetch ("/api/post", {
             method: "POST",
-            body: JSON.stringify({ title, content, image }),
+            body: JSON.stringify({ title, content }),
             headers: { "Content-Type": "application/json" },
           });
           if (response.ok) {
             console.log("response", response);
-            document.location.replace("/user");
+            document.location.replace("/posts");
           } else {
-            alert("Failed to sign up.");
+            alert("Failed to post.");
           };
         renderBlogPost();
     }

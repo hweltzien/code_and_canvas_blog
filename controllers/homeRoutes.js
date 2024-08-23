@@ -1,6 +1,7 @@
 const router = require("express").Router();
-const { Title, User } = require("../models/user");
+
 const withAuth = require("../utils/auth");
+const { Posts, User } = require("../models/index");
 
 
 router.get("/", async (req, res) => {
@@ -63,10 +64,12 @@ router.get("/getStarted", (req, res) => {
     }
   });
   
-  router.get("/posts", (req, res) => {
+  router.get("/posts", async (req, res) => {
     try {
-  
-      res.render("posts", {isLoggedIn: req.session.isLoggedIn});
+      const postData = await Posts.findAll({include: User});
+      const formattedPosts = postData.map((post) => post.get({ plain: true }));
+      console.log(formattedPosts);
+      res.render("posts", {isLoggedIn: req.session.isLoggedIn, posts: formattedPosts});
   
     } catch (err) {
       res.json(err);
