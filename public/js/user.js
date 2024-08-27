@@ -1,5 +1,5 @@
 //reference to the DOM element
-const formEl = document.querySelector('.user-form');
+const formEl = document.querySelector('#user-form');
 
 const titleInput = document.querySelector('#post-title');
 const contentInput = document.querySelector('#content');
@@ -56,13 +56,17 @@ const submitBtn = document.querySelector('.submit');
 //checking that user input is provided on clicking "submit"
 formEl.addEventListener('submit', async function (event) {
     event.preventDefault();
-    
+    const formData = new FormData(formEl);
+
     const title = titleInput.value;
     const content = contentInput.value;
-console.log(title,content,"Add new post")
+    const image = imageInput.value;
+    formData.append('title', title);
+    formData.append('content', content);
+    formData.append('file', image);
     
     if (title === '') {
-        //displayMessage('error', 'Please provide title');
+        // displayMessage('error', 'Please provide title');
         alert("Please provide title")
         return;
     } else {
@@ -70,8 +74,8 @@ console.log(title,content,"Add new post")
       
         const response = await fetch ("/api/post", {
             method: "POST",
-            body: JSON.stringify({ title, content }),
-            headers: { "Content-Type": "application/json" },
+            body: formData,
+            
           });
           if (response.ok) {
             console.log("response", response);
@@ -83,17 +87,17 @@ console.log(title,content,"Add new post")
     }
     
     // create object from each blog post
-    const newBlogPost = {
-        username: usernameInput.value.trim(),
-        title: titleInput.value.trim(),
-        content: contentInput.value,
-    }
-    //push each blog post into the array
-    allBlogPost.push(newBlogPost);
+    // const newBlogPost = {
+    //     username: usernameInput.value.trim(),
+    //     title: titleInput.value.trim(),
+    //     content: contentInput.value,
+    // }
+    // //push each blog post into the array
+    // allBlogPost.push(newBlogPost);
 
-    // set new post to local storage
-    localStorage.setItem('blogPosts', JSON.stringify(allBlogPost));
-    document.location.replace("/posts");
+    // // set new post to local storage
+    // localStorage.setItem('blogPosts', JSON.stringify(allBlogPost));
+    // document.location.replace("/posts");
 });
 
 
