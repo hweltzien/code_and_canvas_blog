@@ -3,6 +3,7 @@ const loginFormHandler = async (event) => {
     const email = document.querySelector("#email-login").value.trim();
     const password = document.querySelector("#password-login").value.trim();
     if (email && password) {
+      try{
       const response = await fetch("/api/user/login", {
         method: "POST",
         body: JSON.stringify({ email, password }),
@@ -11,14 +12,23 @@ const loginFormHandler = async (event) => {
       if (response.ok) {
         
         const data = await response.json(); // Parse the JSON from the response
-        console.log("response data", data); // Log the response data
-        localStorage.setItem("response", JSON.stringify(response));
+        console.log("Login successful:", data); // Log the response data
+        localStorage.setItem("userData", JSON.stringify(data));
         document.location.replace('/user');
-        console.log("response", response);
+       
       } else {
-        alert("Failed to log in.");
+        // Parse the error message from the server
+        const errorData = await response.json();
+        console.error("Login failed:", errorData);
+        alert(`Failed to log in: ${errorData.message || 'Unknown error'}`);
       }
+    } catch (error) {
+      console.error("Error during login:", error);
+      alert("An error occurred. Please try again.");
     }
+  } else {
+    alert("Please enter both email and password.");
+  }
   };
  
   document

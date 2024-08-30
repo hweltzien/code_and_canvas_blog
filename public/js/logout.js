@@ -13,3 +13,23 @@ const logout = async () => {
   
   document.querySelector('#logout').addEventListener('click', logout);
   
+  const homeButton = async () => {
+    const response = await fetch('/', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+    });
+  
+    if (response.ok) {
+      document.location.replace('/');
+    }
+  };
+  
+  document.querySelector('#home').addEventListener('click', homeButton);
+
+  const cancelButton = async () => {
+    
+      document.location.replace('/login');
+    
+  };
+  
+  document.querySelector('#cancel').addEventListener('click', cancelButton);

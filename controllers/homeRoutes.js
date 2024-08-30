@@ -75,6 +75,24 @@ router.get("/getStarted", (req, res) => {
       res.json(err);
     }
   });
+  // router.get("/post/:id", async (req, res) => {
+  //   try {
+  //     const postData = await Posts.findByPk(req.params.id, {include: User});
+  
+  //     if (postData) {
+  //       const post = postData.get({ plain: true });
+  
+  //       res.render("posts", {
+  //         post,
+  //         isLoggedIn: req.session.isLoggedIn,
+  //       });
+  //     } else {
+  //       res.status(404).end();
+  //     }
+  //   } catch (err) {
+  //     res.status(500).json(err);
+  //   }
+  // });
   router.get("/services", (req, res) => {
     try {
   

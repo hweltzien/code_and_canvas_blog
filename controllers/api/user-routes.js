@@ -1,6 +1,6 @@
 const router = require("express").Router();
-const {User}  = require("../../models");
-
+const { User } = require("../../models");
+//localhost:3001/api/user
 // CREATE new user
 router.post("/getStarted", async (req, res) => {
   console.log(req.body);
@@ -21,6 +21,31 @@ router.post("/getStarted", async (req, res) => {
     res.status(500).json(err);
   }
 });
+
+// // Test user creation
+
+// const testUser = async () => {
+//   try {
+//     // Create a new user
+//     const newUser = await User.create({
+//       username: 'testuser',
+//       email: 'testuser@example.com',
+//       password: 'password123',
+//     });
+
+//     // Verify that the user was created
+//     console.log('New User:', newUser);
+
+//     // Check password
+//     const isPasswordValid = newUser.checkPassword('password123');
+//     console.log('Password Valid:', isPasswordValid);
+//   } catch (error) {
+//     console.error('Error:', error);
+//   }
+// };
+
+// testUser();
+
 
 // Login
 router.post("/login", async (req, res) => {
@@ -55,7 +80,7 @@ router.post("/login", async (req, res) => {
         "File: user-routes.js ~ line 57 ~ req.session.save ~ req.session.cookie",
         req.session.cookie
       );
-      
+
       res
         .status(200)
         .json({ user: dbUserData, message: "You are now logged in!" });
@@ -68,18 +93,18 @@ router.post("/login", async (req, res) => {
 
 // Logout
 router.post("/logout", (req, res) => {
-  if(req.session.isLoggedIn){
+  if (req.session.isLoggedIn) {
     req.session.isLoggedIn = false;
-  req.session.destroy(err => {
+    req.session.destroy(err => {
       if (err) {
         console.log(err);
         res.status(500).json({ message: 'Failed to log out' });
       }
       res.clearCookie("connect.sid", { path: '/' });
-      res.render("logout",{isLoggedIn:false});
-      
+      res.render("logout", { isLoggedIn: false });
+
     });
-  }else{
+  } else {
     res.redirect("/");
   }
 });

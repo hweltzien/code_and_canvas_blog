@@ -40,6 +40,7 @@ const submitBtn = document.querySelector('.submit');
             <h2>${blogPost.title}</h2>
             <p>${blogPost.content}</p>
             <p>${response.username}</p>
+
         `;
         blogPostDiv.appendChild(blogPostDiv);
     });
