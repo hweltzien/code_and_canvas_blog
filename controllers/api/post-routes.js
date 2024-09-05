@@ -1,10 +1,11 @@
 const router = require('express').Router();
-const { Posts } = require('../../models');
+const { Posts, Comment } = require('../../models');
 const cloudinary = require('cloudinary');
 require("dotenv").config();
 const multer = require('multer');
 const storage = multer.memoryStorage();
 const upload = multer({ storage: storage });
+
 
 cloudinary.config({
   cloud_name: process.env.cloudinary_cloud_name,
@@ -48,6 +49,22 @@ router.post("/", upload.single('image'), async (req, res) => {
     console.log(err);
     res.status(500).json(err);
   }
+});
+
+// CREATE new comment
+router.post("/comment", async (req, res) => {
+  try {
+  const dbCommentData = await Comment.create({
+    content: req.body.content,
+    user_id: req.session.user_id,
+    post_id: req.body.post_id,
+  })
+
+  res.status(200).json(dbCommentData);
+} catch (err) {
+console.log(err);
+res.status(500).json(err);
+}
 });
 
 module.exports = router;
