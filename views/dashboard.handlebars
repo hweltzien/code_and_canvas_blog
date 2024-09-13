@@ -1,0 +1,24 @@
+<div class="flex flex-col items-center justify-center py-40">
+    <h1 class="text-3xl font-bold text-center dark:text-white">Welcome to your dashboard</hjson>
+    <p class="text-center dark:text-white">Here you can view all your posts and create new ones</p>
+<button type="button" id="newPostBtn" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"><a href="/user">New post</a></button>
+</div>
+
+
+    {{#each posts}}    
+<article class="border" id="dynamicPosts">
+    {{#if url}}
+    <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg" src="{{url}}" alt="Post Image"/>
+    {{/if}}
+    <div class="flex flex-col justify-between p-4 leading-normal">
+        <a href = "/post/{{id}}"><h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">{{title}}</h5></a>
+        <p class="mb-3 font-normal text-gray-700 dark:text-gray-400">{{content}}</p>
+    
+    </div>
+
+
+</article>
+{{/each}}
+
+
+<script src="js/dashboard.js"></script>

@@ -3,6 +3,7 @@ const commentFormHandler = async (event) => {
     event.preventDefault();
     const content = document.querySelector("#comment").value.trim();
      const post_id = document.querySelector("#postId").value.trim();
+     console.log("post_id", post_id,content);
         const response = await fetch("/api/post/comment", {
         method: "POST",
         body: JSON.stringify({ content, post_id }),
@@ -20,4 +21,4 @@ const commentFormHandler = async (event) => {
     .querySelector("#commentForm")
     .addEventListener("submit", commentFormHandler);
 
-    //click submit, post id, send it in request//
+    //javascript to send update request and delete request//

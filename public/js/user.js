@@ -80,7 +80,7 @@ formEl.addEventListener('submit', async function (event) {
           });
           if (response.ok) {
             console.log("response", response);
-            document.location.replace("/");
+            document.location.replace("/dashboard");
           } else {
             alert("Failed to post.");
           };

@@ -14,7 +14,7 @@ const loginFormHandler = async (event) => {
         const data = await response.json(); // Parse the JSON from the response
         console.log("Login successful:", data); // Log the response data
         localStorage.setItem("userData", JSON.stringify(data));
-        document.location.replace('/user');
+        document.location.replace('/dashboard');
        
       } else {
         // Parse the error message from the server

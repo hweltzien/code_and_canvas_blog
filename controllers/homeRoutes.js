@@ -7,8 +7,14 @@ const { Posts, User, Comment } = require("../models/index");
 router.get("/", async (req, res) => {
   console.log("homepage route");
   try {
+      const postData = await Posts.findAll({include: User});
+      const formattedPosts = postData.map((post) => post.get({ plain: true }));
+      console.log(formattedPosts);
+      // res.render("posts", {isLoggedIn: req.session.isLoggedIn, posts: formattedPosts});
 console.log(req.session.isLoggedIn)
-    res.render("homepage", {isLoggedIn: req.session.isLoggedIn});
+    res.render("homepage", {isLoggedIn: req.session.isLoggedIn,posts:formattedPosts});
+    
+
 
   } catch (err) {
     res.json(err);
@@ -17,18 +23,16 @@ console.log(req.session.isLoggedIn)
 
 
 router.get("/getStarted", (req, res) => {
-  if (req.session.isLoggedIn) {
-    res.redirect("/");
-    return;
-  }
-
+  
+  try {
+      
     res.render("getStarted");
     
-    
-    
-    
-    
-  });
+  } catch (err) {
+    res.json(err);
+  }
+});
+   
   router.get("/login", (req, res) => {
     try {
       
@@ -52,19 +56,24 @@ router.get("/getStarted", (req, res) => {
       const postData = await Posts.findAll({include: User});
       const formattedPosts = postData.map((post) => post.get({ plain: true }));
       console.log(formattedPosts);
-      res.render("posts", {isLoggedIn: req.session.isLoggedIn, posts: formattedPosts});
+      res.render("posts", {isLoggedIn: req.session.isLoggedIn, posts: formattedPosts, isLoggedOut: !req.session.isLoggedIn});
+      
+
   
     } catch (err) {
       res.json(err);
     }
   });
   router.get("/post/:id", async (req, res) => {
+    console.log("GET POST ROUTE")
     try {
-      const postData = await Posts.findByPk(req.params.id, {include: [User, {model: Comment, include: User}]});
+      const postData = await Posts.findByPk(req.params.id, {include: [User, {
+        model: Comment,
+        include: User}]});
   
       if (postData) {
         const post = postData.get({ plain: true });
-  console.log(post.comments);
+  console.log("POST AND COMMENT",post,post.comments);
         res.render("individual", {
           post,
           isLoggedIn: req.session.isLoggedIn,
@@ -77,15 +86,7 @@ router.get("/getStarted", (req, res) => {
       res.status(500).json(err);
     }
   });
-  router.get("/services", (req, res) => {
-    try {
-  
-      res.render("services", {isLoggedIn: req.session.isLoggedIn});
-  
-    } catch (err) {
-      res.json(err);
-    }
-  });
+ 
   router.get("/user", (req, res) => {
     try {
       
@@ -95,7 +96,23 @@ router.get("/getStarted", (req, res) => {
       res.json(err);
     }
   });
-
+  router.get("/dashboard", async (req, res) => {
+    if (!req.session.isLoggedIn) {
+      res.redirect("/login");
+      return;
+    }
+    try {
+      const postData = await Posts.findAll({where: 
+        {user_id: req.session.user_id}
+      });
+      const formattedPosts = postData.map((post) => post.get({ plain: true }));
+      console.log(formattedPosts);
+      res.render("dashboard", {isLoggedIn: req.session.isLoggedIn, posts: formattedPosts});
+  
+    } catch (err) {
+      res.json(err);
+    }
+  });
 
 module.exports = router;
 
