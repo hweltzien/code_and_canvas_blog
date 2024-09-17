@@ -22,7 +22,7 @@ const userData = [
 const seedUsers = async () => {
   try {
     // Clear existing users
-    await User.destroy({ where: {} });
+    await User.sync({ force: true });
 
     // Create users
     for (const user of userData) {

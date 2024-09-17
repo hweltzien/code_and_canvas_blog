@@ -65,8 +65,9 @@ router.post("/login", async (req, res) => {
     }
 
     const validPassword = await dbUserData.checkPassword(req.body.password);
-
+console.log("valid password", validPassword);
     if (!validPassword) {
+      
       res
         .status(400)
         .json({ message: "Incorrect email or password. Please try again!" });
@@ -101,7 +102,7 @@ router.post("/logout", (req, res) => {
         res.status(500).json({ message: 'Failed to log out' });
       }
       res.clearCookie("connect.sid", { path: '/' });
-      res.render("logout", { isLoggedIn: false });
+      res.json({ isLoggedIn: false });
 
     });
   } else {
