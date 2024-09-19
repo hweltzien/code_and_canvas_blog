@@ -1,9 +1,9 @@
-
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
              
 
-header {
-    padding: 30px;
-}
+
 h1 {
     font-family: "Dancing Script", cursive;
     text-align: center;

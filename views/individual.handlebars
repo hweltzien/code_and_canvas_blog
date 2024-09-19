@@ -1,4 +1,4 @@
-<h1 class="text-3xl py-40">Post a comment</h1>
+<h1 class="text-3xl pt-40 dancing-script">Detailed View</h1>
 {{#if isAuthor}}
 <article class="border" id="dynamicPosts">
     <button type="button" id="deleteBtn"
@@ -24,7 +24,7 @@
     {{/each}}
 </article>
 {{else}}
-<article class="border" id="dynamicPosts">
+<div class="w-fit max-w-[50rem] border m-auto flex flex-col items-center" id="dynamicPosts">
     <img class="object-cover w-full rounded-t-lg h-96 md:h-auto md:w-48 md:rounded-none md:rounded-s-lg"
         src="{{post.url}}" alt="Post Image" />
 
@@ -35,10 +35,28 @@
     </div>
     {{!-- //post.comment, each loop, for each one make a comment box --}}
     {{#each post.comments}}
-    <p>{{this.date}}{{this.content}}<span> By {{this.user.username}}</span></p>
+   
+    <div class="max-w-[50rem] p-6 text-base bg-white rounded-lg dark:bg-gray-900">
+        <footer class="flex justify-between items-center mb-2">
+            <div class="flex items-center">
+                <p class="inline-flex items-center mr-3 text-sm text-gray-900 dark:text-white font-semibold"><img
+                        class="mr-2 w-6 h-6 rounded-full"
+                        src="/images/head-and-shoulders.jpg"
+                        alt="head and shoulders icon">{{this.user.username}}</p>
+                <p class="text-sm text-gray-600 dark:text-gray-400"><time pubdate datetime="2022-02-08"
+                        title="February 8th, 2022">{{format_date this.date}}</time></p>
+            </div>
+           
+        
+           
+        </footer>
+        <p class="text-gray-500 dark:text-gray-400">{{this.content}}</p>
+        
+    </div>
     {{/each}}
-</article>
+</div>
 {{/if}}
+{{#if isLoggedIn}}
 <form id="commentForm" class="border p-4">
     <label for="comment">Comment:</label>
     <textarea id="comment" name="comment" rows="4" cols="50"></textarea>
@@ -46,6 +64,7 @@
         class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-4 py-2 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Post
         comment</button>
 </form>
+{{/if}}
 <input type="hidden" id="postId" value="{{post.id}}">
 <script src="/js/individual.js"></script>
 {{#if isAuthor}}

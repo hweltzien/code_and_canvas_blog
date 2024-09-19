@@ -9,8 +9,8 @@ module.exports = {
       }
     },
     fontFamily: {
-      'sans': ['Dancing Script', cursive],
-      'mono': ['Shadows Into Light', cursive],
+      'sans': ['Dancing Script', 'cursive'],
+      
       
     }
   },
