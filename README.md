@@ -16,8 +16,8 @@ by Heather Weltzien
     
 ## Usage
     Run node server.js in the terminal. Test API routes in Insomnia Core to create, update, and delete data in the database.
-<img src= "./images/Screenshot.png" alt="screenshot">
 
+<img src= "/images/screenshot.png" alt="screenshot">
 
 
     
@@ -25,7 +25,8 @@ by Heather Weltzien
 <ul>    
     <li>Office hours with Erik Hirsch</li>
     <li>Office hours with Anthony Barragan</li>
-    <li>Tutoring session with Katie Redford</li>    
+    <li>Tutoring session with Katie Redford</li>
+    <li>Tutoring session with Nicholas Mtabo</li>
 </ul>    
 
 ## License
