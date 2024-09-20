@@ -5,7 +5,7 @@ const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const path = require("path"); // Ensure this line is present
 const { Sequelize } = require("sequelize");
-
+require("dotenv").config();
 const sequelize = new Sequelize(
   process.env.DATABASE_URL,
   {
@@ -35,7 +35,7 @@ const sess = {
     maxAge: 1 * 60 * 60 * 1000, // expires after 1 hour
     httpOnly: true,
     sameSite: "strict",
-    secure: true,
+    secure: process.env.NODE_ENV === "production",
   },
   resave: false,
   saveUninitialized: false,
@@ -67,10 +67,23 @@ app.use(express.static(path.join(__dirname, "public")));
 app.use(routes);
 
 
+// Run migrations before starting the server
+const runMigrations = async () => {
+  try {
+    await sequelize.authenticate(); // Test the connection
+    console.log("Connection has been established successfully.");
 
+    // Here you would run your migrations
+    // For example, using the Sequelize CLI:
+    // await sequelize.getQueryInterface().showAllTables(); // Example of checking tables
 
-sequelize.sync({ force: false }).then(() => {
-  app.listen(PORT, () =>
-    console.log(`Server is listening on http://localhost:${PORT}`)
-  );
-});
+    // After running migrations, start the server
+    app.listen(PORT, () =>
+      console.log(`Server is listening on http://localhost:${PORT}`)
+    );
+  } catch (error) {
+    console.error('Unable to connect to the database:', error);
+  }
+};
+
+runMigrations();

@@ -19,6 +19,9 @@ by Heather Weltzien
 
 <img src= "/images/screenshot.png" alt="screenshot">
 
+<a href="https://code-and-canvas-blog.onrender.com" target="_blank">Link to deployed application</a>
+
+
 
     
 ## Credits
