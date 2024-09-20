@@ -4,6 +4,7 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const path = require("path"); // Ensure this line is present
+const { Sequelize } = require("sequelize");
 
 const sequelize = new Sequelize(
   process.env.DATABASE_URL,
@@ -34,7 +35,7 @@ const sess = {
     maxAge: 1 * 60 * 60 * 1000, // expires after 1 hour
     httpOnly: true,
     sameSite: "strict",
-    secure: false,
+    secure: true,
   },
   resave: false,
   saveUninitialized: false,
@@ -57,8 +58,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
-// Serve static files from the "public" directory
-app.use(express.static("public"));
+
 // Define a route to render the homepage.handlebars template
 
 
