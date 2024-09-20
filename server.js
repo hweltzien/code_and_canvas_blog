@@ -4,22 +4,9 @@ const exphbs = require("express-handlebars");
 const routes = require("./controllers");
 const helpers = require("./utils/helpers");
 const path = require("path"); // Ensure this line is present
-const { Sequelize } = require("sequelize");
+const sequelize = require("./config/connection");
 require("dotenv").config();
-const sequelize = new Sequelize(
-  process.env.DATABASE_URL,
-  {
-    dialect: 'postgres',
-    protocol: 'postgres',
-    logging: false,
-    dialectOptions: {
-      ssl: {
-        require: true,
-        rejectUnauthorized: false
-      }
-    }
-  }
-);
+
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 
 
@@ -70,7 +57,7 @@ app.use(routes);
 // Run migrations before starting the server
 const runMigrations = async () => {
   try {
-    await sequelize.authenticate(); // Test the connection
+    await sequelize.sync({force:false}); // Test the connection
     console.log("Connection has been established successfully.");
 
     // Here you would run your migrations
