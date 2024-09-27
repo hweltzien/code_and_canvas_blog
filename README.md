@@ -17,7 +17,7 @@ by Heather Weltzien
 ## Usage
     Run node server.js in the terminal. Test API routes in Insomnia Core to create, update, and delete data in the database.
 
-<img src= "/images/screenshot.png" alt="screenshot">
+<img src= "./public/images/screenshot.png" alt="screenshot">
 
 <a href="https://code-and-canvas-blog.onrender.com" target="_blank">Link to deployed application</a>
 
